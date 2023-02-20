@@ -18,15 +18,16 @@
         <form class="compound-form">
           <div class="input-group">
             <label for="initialAmount">Počáteční vklad [Kč]</label>
-            <input type="number" name="" id="initialAmount" value="0" /><br />
-            <small>Nepovinné</small>
+            <input type="number" name="" id="initialAmount" /><br />
+            <div id="initial-warning">
+              <small>Tento údaj musíte vyplnit!</small>
+            </div>
           </div>
           <div class="input-group">
             <label for="monthlyDeposit">Měsíční vklad [Kč]</label>
-            <input type="number" name="" id="monthlyDeposit" />
-            <div id="monthly-warning">
-              <small>Tento údaj musíte vyplnit!</small>
-            </div>
+            <input type="number" name="" id="monthlyDeposit" value="0"/>
+            <small>Nepovinné</small>
+            
           </div>
           <div class="input-group">
             <label for="rates">Roční úrok [%]</label>
@@ -54,6 +55,7 @@
       <div class="results" id="chart-area">
         <h3 id="message"></h3>
         <canvas id="data-set"></canvas>
+        <h3 id="months-message"></h3>
       </div>
     </section>
     <section class="table-section" id="results-table-section">

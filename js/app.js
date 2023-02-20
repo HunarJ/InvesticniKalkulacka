@@ -7,11 +7,9 @@ const monthlyDeposit = document.getElementById("monthlyDeposit");
 const rates = document.getElementById("rates");
 const savingsLengthChoise = document.getElementById("savingsLengthChoise");
 
-//SMAZAT!!!!
-//document.getElementById("chart-area").style.visibility = "visible";
-
-//Message
+//Messages
 const message = document.getElementById("message");
+const monthsMessage = document.getElementById("months-message");
 
 const data = [];
 const labels = [];
@@ -49,36 +47,36 @@ function calculateGrowth(e) {
     data.push(final);
 
     //Secure that every important inputs will be filled up, if not, that warning
-    if (!repeated && !interest && !period) {
-      document.getElementById("monthly-warning").style.visibility = "visible";
+    if (!initial && !interest && !initial) {
+      document.getElementById("initial-warning").style.visibility = "visible";
       document.getElementById("rates-warning").style.visibility = "visible";
       document.getElementById("duration-warning").style.visibility = "visible";
-    } else if (!repeated && !interest && period) {
-      document.getElementById("monthly-warning").style.visibility = "visible";
+    } else if (!initial && !interest && period) {
+      document.getElementById("initial-warning").style.visibility = "visible";
       document.getElementById("rates-warning").style.visibility = "visible";
       document.getElementById("duration-warning").style.visibility = "hidden";
-    } else if (!repeated && interest && period) {
-      document.getElementById("monthly-warning").style.visibility = "visible";
+    } else if (!initial && interest && period) {
+      document.getElementById("initial-warning").style.visibility = "visible";
       document.getElementById("rates-warning").style.visibility = "hidden";
       document.getElementById("duration-warning").style.visibility = "hidden";
-    } else if (repeated && !interest && !period) {
-      document.getElementById("monthly-warning").style.visibility = "hidden";
+    } else if (initial && !interest && !period) {
+      document.getElementById("initial-warning").style.visibility = "hidden";
       document.getElementById("rates-warning").style.visibility = "visible";
       document.getElementById("duration-warning").style.visibility = "visible";
-    } else if (repeated && !interest && period) {
-      document.getElementById("monthly-warning").style.visibility = "hidden";
+    } else if (initial && !interest && period) {
+      document.getElementById("initial-warning").style.visibility = "hidden";
       document.getElementById("rates-warning").style.visibility = "visible";
       document.getElementById("duration-warning").style.visibility = "hidden";
-    } else if (repeated && interest && !period) {
-      document.getElementById("monthly-warning").style.visibility = "hidden";
+    } else if (initial && interest && !period) {
+      document.getElementById("initial-warning").style.visibility = "hidden";
       document.getElementById("rates-warning").style.visibility = "hidden";
       document.getElementById("duration-warning").style.visibility = "visible";
-    } else if (!repeated && interest && !period) {
-      document.getElementById("monthly-warning").style.visibility = "visible";
+    } else if (!initial && interest && !period) {
+      document.getElementById("initial-warning").style.visibility = "visible";
       document.getElementById("rates-warning").style.visibility = "hidden";
       document.getElementById("duration-warning").style.visibility = "visible";
     } else {
-      document.getElementById("monthly-warning").style.visibility = "hidden";
+      document.getElementById("initial-warning").style.visibility = "hidden";
       document.getElementById("rates-warning").style.visibility = "hidden";
       document.getElementById("duration-warning").style.visibility = "hidden";
     }
@@ -107,12 +105,19 @@ function calculateGrowth(e) {
     data.splice(-1);
     if (periodChoise == 2) {
       message.innerText = `Na konci investiční doby budete mít ${growth} Kč po ${period} měsících.`;
+      if(period < 12){
+        monthsMessage.style.visibility = 'visible';
+        monthsMessage.innerText = 'Délka investice nepřesáhla 1rok, proto nelze vidět žádné roční zúročení!';
+      }else{
+        monthsMessage.style.visibility = 'hidden';
+      }
     } else {
+      monthsMessage.style.visibility = 'hidden';
       message.innerText = `Na konci investiční doby budete mít ${growth} Kč po ${period} letech.`;
     }
-    console.table(data);
 
-    drawGraph(repeated, interest, period);
+    // Chart expresion after successfully calculation
+    drawGraph(initial, interest, period);
 
     //
   } catch (error) {
@@ -120,8 +125,8 @@ function calculateGrowth(e) {
   }
 }
 
-function drawGraph(repeated, interest, period) {
-  if (repeated && interest && period) {
+function drawGraph(initial, interest, period) {
+  if (initial && interest && period) {
     document.getElementById("chart-area").style.visibility = "visible";
       } else {
     document.getElementById("chart-area").style.visibility = "hidden";
@@ -152,7 +157,8 @@ function toDecimal(value, decimals) {
   return parseInt(value.toFixed(decimals));
 }
 
-function createTable(repeated, interest, period) {
+//Creates results table
+function createTable() {
   let section = document.getElementById('results-table-section');
   section.style.visibility = 'visible';
   let resultsTable = `<table id="results-table">
@@ -170,6 +176,7 @@ function createTable(repeated, interest, period) {
   
 }
 
+//Inserts data into results table
 function insertRow(time, value) {
   let tableRow = `<tr>
                     <td>${time}</td>
@@ -178,6 +185,7 @@ function insertRow(time, value) {
   document.getElementById("results-table-body").innerHTML += tableRow;
 }
 
+//Clears table if calculation goes wrong
 function clearTable(tableFromFunction) {
   
   let table = tableFromFunction;

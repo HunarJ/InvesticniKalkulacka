@@ -71,6 +71,12 @@ body {
     font-size: 15px;;
     margin-bottom: 30px;
 }
+#months-message {
+    font-size: 10px;;
+    margin-top: 10px;
+    color: red;
+    visibility: hidden;
+}
 
 .input-group {
     margin: 20px 0;
@@ -104,7 +110,7 @@ body {
 
 
 
-#monthly-warning {
+#initial-warning {
     color: red;
     font-weight: bold;
     visibility: hidden;
