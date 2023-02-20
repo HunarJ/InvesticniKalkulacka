@@ -1,0 +1,159 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap');
+
+*{
+    padding: 0;
+    margin: 0;
+    font-family: "Montserrar", sans-serif;
+    box-sizing: border-box;
+}
+body {
+    background-color: #2B3467;
+}
+.container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin: 40px;
+}
+
+.table-section {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin: 40px;
+}
+
+.calculator {
+    margin: 50px;
+    width: 30%;
+    color: black;
+    background-color: #F1F6F5;
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 2px 2px 2px 2px grey;
+
+}
+.results {
+    box-shadow: 2px 2px 2px 2px grey;
+    background-color: #F1F6F5;
+    width: 60%;
+    margin: 50px;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    border-radius: 20px;
+}
+.align-help-container{
+    margin: 50px;
+    width: 30%;
+
+}
+.results-table-container {
+    box-shadow: 2px 2px 2px 2px grey;
+    background-color: #F1F6F5;
+    width: 60%;
+    margin: 50px;
+    padding: 20px;
+    display: flex;
+    align-items: start;
+    justify-content: center;
+    flex-direction: column;
+    border-radius: 20px;
+}
+
+.heading h3 {
+    font-size: 25px;
+}
+
+#message {
+    font-size: 15px;;
+    margin-bottom: 30px;
+}
+
+.input-group {
+    margin: 20px 0;
+}
+
+.input-group label {
+    display: block;
+}
+
+.input-group input,
+.input-group button,
+.input-group select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid black;
+    outline: none;
+    border-radius: 5px;
+}
+
+.input-group button {
+    background-color: #2B3467;
+    color: white;
+}
+.input-group button:hover{
+    background-color: #F1F6F5;
+    color: black;
+    font-weight: bold;
+    border: 2px solid black;
+}
+
+
+
+
+#monthly-warning {
+    color: red;
+    font-weight: bold;
+    visibility: hidden;
+}
+#rates-warning {
+    color: red;
+    font-weight: bold;
+    visibility: hidden;
+}
+#duration-warning {
+    color: red;
+    font-weight: bold;
+    visibility: hidden;
+}
+#chart-area {
+    visibility: hidden;
+}
+#results-table-section{
+    visibility: hidden;
+}
+
+#results-table{
+    width: 100%;
+    margin: 25px 0;
+    text-align: left;
+    border-collapse: collapse;
+    border-radius: 5px 5px 0 0;
+    overflow: hidden;
+
+}
+#results-table thead tr {
+    background-color: #2B3467;
+    color: #ffffff;
+    font-weight: bold;
+}
+#results-table th,
+#results-table td {
+    padding: 12px 15px;
+}
+#results-table tbody tr {
+    border-bottom: 1px solid #dddddd;
+}
+#results-table tbody tr:nth-of-type(even){
+    background-color: #f3f3f3;
+}
+#results-table tbody tr:last-of-type{
+    border-bottom: 2px solid #2B3467;
+}
+#results-table tbody tr:hover {
+    font-weight: bold;
+    color: #2B3467;
+}

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="cs-cz">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Investiční kalkulačka</title>
+    <link rel="stylesheet" href="styles/main.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
+  </head>
+  <body>
+    <section class="container">
+      <div class="calculator">
+        <div class="heading">
+          <h3>Investiční kalkulačka</h3>
+          <small>Nárust vašich peněz v čase při složeném úrokování</small>
+        </div>
+        <form class="compound-form">
+          <div class="input-group">
+            <label for="initialAmount">Počáteční vklad [Kč]</label>
+            <input type="number" name="" id="initialAmount" value="0" /><br />
+            <small>Nepovinné</small>
+          </div>
+          <div class="input-group">
+            <label for="monthlyDeposit">Měsíční vklad [Kč]</label>
+            <input type="number" name="" id="monthlyDeposit" />
+            <div id="monthly-warning">
+              <small>Tento údaj musíte vyplnit!</small>
+            </div>
+          </div>
+          <div class="input-group">
+            <label for="rates">Roční úrok [%]</label>
+            <input type="number" name="" id="rates" />
+            <div id="rates-warning">
+              <small>Tento údaj musíte vyplnit!</small>
+            </div>
+          </div>
+          <div class="input-group">
+            <label for="investmentYears">Délka investování</label>
+            <input type="number" name="" id="investmentYears" />
+            <div id="duration-warning">
+              <small>Tento údaj musíte vyplnit!</small>
+            </div>
+            <select id="savingsLengthChoise">
+              <option value="1">Let</option>
+              <option value="2">Měsíců</option>
+            </select>
+          </div>
+          <div class="input-group">
+            <button>Spočítej</button>
+          </div>
+        </form>
+      </div>
+      <div class="results" id="chart-area">
+        <h3 id="message"></h3>
+        <canvas id="data-set"></canvas>
+      </div>
+    </section>
+    <section class="table-section" id="results-table-section">
+      <div class="align-help-container"></div>
+      <div class="results-table-container" id="table-container">
+        
+      </div>
+    </section>
+    <script src="js/app.js"></script>
+  </body>
+</html>
